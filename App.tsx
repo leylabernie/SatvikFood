@@ -1,15 +1,15 @@
 
 import React, { useState, useMemo, useCallback, useEffect } from 'react';
-import { Recipe, DietaryTag, CartItem, Ingredient, Cuisine, MealPlan, Day, Meal, DailyMeals } from './types';
-import { recipes as allRecipes } from './services/recipeService';
-import { getAIMealPlan } from './services/geminiService';
-import RecipeCard from './components/RecipeCard';
-import SearchBar from './components/SearchBar';
-import RecipeDetailModal from './components/RecipeDetailModal';
-import ShoppingCart from './components/ShoppingCart';
-import RecipeSuggestion from './components/RecipeSuggestion';
-import MealPlannerModal from './components/MealPlannerModal';
-import { ShoppingCartIcon, CalendarIcon } from './components/icons';
+import { Recipe, DietaryTag, CartItem, Ingredient, Cuisine, MealPlan, Day, Meal, DailyMeals } from './types.ts';
+import { recipes as allRecipes } from './services/recipeService.ts';
+import { getAIMealPlan } from './services/geminiService.ts';
+import RecipeCard from './components/RecipeCard.tsx';
+import SearchBar from './components/SearchBar.tsx';
+import RecipeDetailModal from './components/RecipeDetailModal.tsx';
+import ShoppingCart from './components/ShoppingCart.tsx';
+import RecipeSuggestion from './components/RecipeSuggestion.tsx';
+import MealPlannerModal from './components/MealPlannerModal.tsx';
+import { ShoppingCartIcon, CalendarIcon } from './components/icons.tsx';
 
 const App: React.FC = () => {
     const [recipes, setRecipes] = useState<Recipe[]>(allRecipes);
@@ -296,3 +296,4 @@ const App: React.FC = () => {
 };
 
 export default App;
+
