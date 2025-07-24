@@ -1,6 +1,6 @@
 {
-  "name": "Sattvic Rasoi - Vegetarian Indian Recipes",
-  "description": "A modern web app offering a curated collection of authentic vegetarian Indian recipes, meal planning tools, and an AI-powered chef assistant. Designed for busy professionals and families seeking delicious, easy-to-make meals.",
+  "name": "Vegetarian Indian Recipe Hub",
+  "description": "A comprehensive vegetarian Indian recipe database with categorized cuisines, an AI-powered meal planner, a calorie counter, and an integrated shopping cart to help you plan your meals.",
   "requestFramePermissions": [],
   "prompt": ""
 }

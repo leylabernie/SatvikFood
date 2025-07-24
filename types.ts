@@ -1,96 +1,72 @@
-
-export enum RecipeCategory {
-  Breakfast = 'Breakfast',
-  Lunch = 'Lunch',
-  Dinner = 'Dinner',
-  Snacks = 'Snacks',
-  Sandwich = 'Sandwich',
+export enum DietaryTag {
+  VEGAN = 'Vegan',
+  GLUTEN_FREE = 'Gluten-Free',
+  NUT_FREE = 'Nut-Free',
+  JAIN = 'Jain',
+  QUICK = 'Quick < 30min'
 }
 
 export enum Cuisine {
-  Punjabi = 'Punjabi',
-  SouthIndian = 'South Indian',
-  Bengali = 'Bengali',
-  Gujarati = 'Gujarati',
-  Rajasthani = 'Rajasthani',
-  Maharashtrian = 'Maharashtrian',
-  IndianFusion = 'Indian Fusion',
-  Sandwich = 'Sandwich',
-}
-
-export enum Dietary {
-    Jain = 'Jain',
-    Swaminarayan = 'Swaminarayan',
-    Farali = 'Farali', // Fasting
-    Vegan = 'Vegan',
-    GlutenFree = 'Gluten-Free',
-    KidFriendly = 'Kid-Friendly',
+    PUNJABI = 'Punjabi',
+    SOUTH_INDIAN = 'South Indian',
+    GUJARATI = 'Gujarati',
+    MAHARASHTRIAN = 'Maharashtrian',
+    RAJASTHANI = 'Rajasthani',
+    INDO_CHINESE = 'Indo-Chinese',
+    KIDS = "Kid's Friendly",
+    SANDWICH = 'Sandwich',
+    MUGHLAI = 'Mughlai',
+    JAIN = 'Jain',
 }
 
 export interface Ingredient {
   name: string;
-  quantity: string;
-}
-
-export interface ShoppingListItem extends Ingredient {
-  id: string; // Unique ID for stable list operations
-  checked: boolean;
-}
-
-export interface Nutrition {
-  calories: number;
-  protein: string;
-  carbs: string;
-  fat: string;
-}
-
-export interface Review {
-  id: string;
-  author: string;
-  rating: number; // e.g., 1-5
-  comment: string;
-  date: string; // e.g., "2023-10-27"
+  quantity: number;
+  unit: string;
+  caloriesPerUnit: number;
+  pricePerUnit: number;
 }
 
 export interface Recipe {
-  id: string;
+  id: number;
   name: string;
+  imageUrl: string;
   description: string;
-  category: RecipeCategory;
-  cuisine: Cuisine;
-  prepTime: string;
-  cookTime: string;
-  servings: number;
   ingredients: Ingredient[];
   instructions: string[];
-  nutrition: Nutrition;
-  imageUrl: string;
-  dietary?: Dietary[];
-  reviews?: Review[];
+  prepTime: string;
+  cookTime: string;
+  totalTime: string;
+  totalTimeInMinutes?: number;
+  servings: number;
+  caloriesPerServing: number;
+  dietaryTags: DietaryTag[];
+  cuisine: Cuisine[];
+  rating: number; // out of 5
+  numberOfRatings: number;
 }
 
-export interface Service {
-  id: string;
-  title: string;
-  description: string;
-  provider: string;
-  type: 'Cooking Class' | 'Meal Prep' | 'Nutrition Consultation';
-  price: string;
-  imageUrl: string;
-}
-
-export interface User {
+export interface CartItem {
   name: string;
-  email: string;
-  isPremium: boolean;
+  quantity: number;
+  unit: string;
+  price: number;
+  recipeName: string;
 }
 
-export interface GeneratedRecipe {
-    recipeName: string;
-    description: string;
-    prepTimeMinutes: number;
-    cookTimeMinutes: number;
-    servings: number;
-    ingredients: string[];
-    instructions: string[];
+export type Meal = 'breakfast' | 'lunch' | 'dinner';
+export type Day = 'Monday' | 'Tuesday' | 'Wednesday' | 'Thursday' | 'Friday' | 'Saturday' | 'Sunday';
+
+export interface MealSlot {
+  recipeId: number | null;
 }
+
+export interface DailyMeals {
+  breakfast: MealSlot;
+  lunch: MealSlot;
+  dinner: MealSlot;
+}
+
+export type MealPlan = {
+  [key in Day]?: DailyMeals;
+};
